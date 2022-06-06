@@ -2,7 +2,6 @@
 # tag - tag for the Base image, (e.g. 1.14.0-py3 for tensorflow)
 # branch - user repository branch to clone (default: master, another option: test)
 # jlab - if to insall JupyterLab (true) or not (false)
-# oneclient_ver - version of oneclient to install (e.g. 19.02.0.rc2-1~bionic)
 #
 # To build the image:
 # $ docker build -t <dockerhub_user>/<dockerhub_repo> --build-arg arg=value .
@@ -27,9 +26,6 @@ ARG branch=master
 
 # If to install JupyterLab
 ARG jlab=true
-
-# Oneclient version, has to match OneData Provider and Linux version
-ARG oneclient_ver=19.02.0.rc2-1~bionic
 
 # Install ubuntu updates and python related stuff
 # link python3 to python, pip3 to pip, if needed
@@ -75,23 +71,12 @@ RUN wget https://downloads.rclone.org/rclone-current-linux-amd64.deb && \
 
 ENV RCLONE_CONFIG=/srv/.rclone/rclone.conf
 
-# INSTALL oneclient for ONEDATA
-RUN curl -sS  http://get.onedata.org/oneclient-1902.sh  | bash -s -- oneclient="$oneclient_ver" && \
-    apt-get clean && \
-    mkdir -p /mnt/onedata && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rf /tmp/* 
-
 # Install DEEPaaS from PyPi
-# Install FLAAT (FLAsk support for handling Access Tokens)
 RUN pip install --no-cache-dir \
-    'deepaas>=1.3.0' \
-    'flaat==0.14.7' && \
+    'deepaas>=1.3.0' && \
     rm -rf /root/.cache/pip/* && \
     rm -rf /tmp/*
 
-# Disable FLAAT authentication by default
-ENV DISABLE_AUTHENTICATION_AND_ASSUME_AUTHENTICATED_USER yes
 
 # EXPERIMENTAL: install deep-start script
 # N.B.: This repository also contains run_jupyter.sh
@@ -115,7 +100,6 @@ RUN git clone -b $branch https://github.com/deephdc/demo_app && \
     rm -rf /root/.cache/pip/* && \
     rm -rf /tmp/* && \
     cd ..
-
 
 # Open DEEPaaS port
 EXPOSE 5000
