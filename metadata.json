@@ -1,0 +1,38 @@
+{
+    "title": "demo_app",
+    "summary": "A toy application for demo and testint purposes. We just implement dummy inference, ie. we return the same inputs we are",
+    "description": [
+		"This is demo_app application using DEEPaaS API",
+           "",
+           "**References**\n",
+           ""
+	],
+    "keywords": [
+        "docker",
+        "api-v2"
+    ],
+    "license": "MIT",
+    "date_creation": "2021-10-05",
+    "sources": {
+		"dockerfile_repo": "https://github.com/deephdc/DEEP-OC-demo_app",
+		"docker_registry_repo": "deephdc/deep-oc-demo_app",
+		"code": "https://github.com/deephdc/demo_app"
+	},
+    "continuous_integration": {
+        "build_status_badge": "https://jenkins.indigo-datacloud.eu/buildStatus/icon?job=Pipeline-as-code/DEEP-OC-org/DEEP-OC-demo_app/master",
+        "build_status_url": "https://jenkins.indigo-datacloud.eu/job/Pipeline-as-code/job/DEEP-OC-org/job/DEEP-OC-demo_app/job/master"
+    },
+    "tosca": [
+        {
+            "title": "Mesos (CPU)",
+            "url": "https://raw.githubusercontent.com/indigo-dc/tosca-templates/master/deep-oc/deep-oc-marathon-webdav.yml",
+            "inputs": [
+                "rclone_conf",
+                "rclone_url",
+                "rclone_vendor",
+                "rclone_user",
+                "rclone_pass"
+            ]
+        }
+    ]
+}
