@@ -12,68 +12,30 @@ This is a container that will run [demo_app](https://github.com/deephdc/demo_app
 ## Running the container
 
 ### Directly from Docker Hub
+> **Warning**: This is not yet available! For the time being you have to build the Docker manually.
 
-To run the Docker container directly from Docker Hub and start using the API
-simply run the following command:
-
+To run the Docker container directly from Docker Hub and start using the API simply run the following command:
 ```bash
-$ docker run -ti -p 5000:5000 -p 6006:6006 deephdc/deep-oc-demo_app
+docker run -ti -p 5000:5000 -p 6006:6006  -p 8888:8888 deephdc/deep-oc-demo_app
 ```
 
-This command will pull the Docker container from the Docker Hub
-[deephdc](https://hub.docker.com/u/deephdc/) repository and start the default command (deepaas-run --listen-ip=0.0.0.0).
+This command will pull the Docker container from the Docker Hub [deephdc](https://hub.docker.com/u/deephdc/) repository and start the default command (`deepaas-run --listen-ip=0.0.0.0`).
 
 **N.B.** For either CPU-based or GPU-based images you can also use [udocker](https://github.com/indigo-dc/udocker).
 
-
-### Running via docker-compose
-
-docker-compose.yml allows you to run the application with various configurations via docker-compose, for example:
-
-```bash
-$ docker-compose up demo_app
-```
-
-**N.B!** docker-compose.yml is of version '2.3', one needs docker 17.06.0+ and docker-compose ver.1.16.0+, see https://docs.docker.com/compose/install/
-
-If you want to use Nvidia GPU, you need nvidia-docker and docker-compose ver1.19.0+ , see [nvidia/FAQ](https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions#do-you-support-docker-compose)
-
-
 ### Building the container
 
-If you want to build the container directly in your machine (because you want
-to modify the `Dockerfile` for instance) follow the following instructions:
+If you want to build the container directly in your machine (because you want to modify the `Dockerfile` for instance) run the following instructions:
+```bash
+git clone https://github.com/deephdc/DEEP-OC-demo_app
+cd DEEP-OC-demo_app
+docker build -t deephdc/deep-oc-demo_app .
+docker run -ti -p 5000:5000 -p 6006:6006 -p 8888:8888 deephdc/deep-oc-demo_app
+```
 
-Building the container:
-
-1. Get the `DEEP-OC-demo_app` repository (this repo):
-
-    ```bash
-    $ git clone https://github.com/deephdc/DEEP-OC-demo_app
-    ```
-
-2. Build the container:
-
-    ```bash
-    $ cd DEEP-OC-demo_app
-    $ docker build -t deephdc/deep-oc-demo_app .
-    ```
-
-3. Run the container (if you enable JupyterLab during the build, `--build-arg jlab=true`, 
-you should also add port 8888, i.e. `-p 8888:8888`):
-
-    ```bash
-    $ docker run -ti -p 5000:5000 -p 6006:6006 deephdc/deep-oc-demo_app
-    ```
-
-These three steps will download the repository from GitHub and will build the
-Docker container locally on your machine. You can inspect and modify the
-`Dockerfile` in order to check what is going on. For instance, you can pass the
-`--debug=True` flag to the `deepaas-run` command, in order to enable the debug
-mode.
+These three steps will download the repository from GitHub and will build the Docker container locally on your machine. You can inspect and modify the `Dockerfile` in order to check what is going on. For instance, you can pass the `--debug=True` flag to the `deepaas-run` command, in order to enable the debug mode.
 
 
 ## Connect to the API
 
-Once the container is up and running, browse to `http://localhost:5000` to get
-the [OpenAPI (Swagger)](https://www.openapis.org/) documentation page.
+Once the container is up and running, browse to `http://localhost:5000` to get the [OpenAPI (Swagger)](https://www.openapis.org/) documentation page.
