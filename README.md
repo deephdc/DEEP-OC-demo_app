@@ -6,17 +6,18 @@
 
 [![Build Status](https://jenkins.indigo-datacloud.eu/buildStatus/icon?job=Pipeline-as-code/DEEP-OC-org/DEEP-OC-demo_app/master)](https://jenkins.indigo-datacloud.eu/job/Pipeline-as-code/job/DEEP-OC-org/job/DEEP-OC-demo_app/job/master)
 
-This is a container that will run [demo_app](https://github.com/deephdc/demo_app) application leveraging the DEEP as a Service API component ([DEEPaaS API V2](https://github.com/indigo-dc/DEEPaaS)).
+This is a container that will run the [demo_app](https://github.com/deephdc/demo_app) application leveraging the DEEP as a Service API component ([DEEPaaS API V2](https://github.com/indigo-dc/DEEPaaS)).
 
-    
+> TODO: create two branches of DEEP-OC that match the two branches in demo-app (master, return-files), so that two different container are built.
+
+
 ## Running the container
 
 ### Directly from Docker Hub
-> **Warning**: This is not yet available! For the time being you have to build the Docker manually.
 
 To run the Docker container directly from Docker Hub and start using the API simply run the following command:
 ```bash
-docker run -ti -p 5000:5000 -p 6006:6006  -p 8888:8888 deephdc/deep-oc-demo_app
+docker run -ti -p 5000:5000 -p 6006:6006 -p 8888:8888 deephdc/deep-oc-demo_app
 ```
 
 This command will pull the Docker container from the Docker Hub [deephdc](https://hub.docker.com/u/deephdc/) repository and start the default command (`deepaas-run --listen-ip=0.0.0.0`).
@@ -38,4 +39,4 @@ These three steps will download the repository from GitHub and will build the Do
 
 ## Connect to the API
 
-Once the container is up and running, browse to `http://localhost:5000` to get the [OpenAPI (Swagger)](https://www.openapis.org/) documentation page.
+Once the container is up and running, browse to http://0.0.0.0:5000/ui to get the [OpenAPI (Swagger)](https://www.openapis.org/) documentation page.
