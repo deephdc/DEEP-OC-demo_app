@@ -2,7 +2,7 @@
     "title": "demo_app",
     "summary": "A toy application for demo and testing purposes. We just implement dummy inference, ie. we return the same inputs we are fed",
     "description": [
-		"This is demo_app application using DEEPaaS API"
+		"This is demo_app application using DEEPaaS API."
 	],
     "keywords": [
         "docker",
