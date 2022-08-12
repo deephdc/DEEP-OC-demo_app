@@ -2,8 +2,20 @@
     "title": "demo_app",
     "summary": "A toy application for demo and testing purposes. We just implement dummy inference, ie. we return the same inputs we are fed",
     "description": [
-		"This is demo_app application using DEEPaaS API."
-	],
+        "It can serve as a reference implementation of current best practices in the project (mirroring the [DEEP template](https://github.com/deephdc/cookiecutter-deep)). \n",
+
+        "This demo module implements:\n",
+        "* **dummy inference**, ie. we return the same inputs we are fed. If some input is not fed we generate a default one. \n",
+        "* **dummy training**, ie. we sleep for some time and output some random monitoring metrics. \n",
+
+        "The two branches in this repo cover the two main usecases: \n",
+        "* `master`: this is a reference implementation on how to return a JSON response for predict(). \n",
+        "* `return-files`: this is a reference implementation on how to return non-JSON responses for predict(). \n",
+        "  This is particularly useful when returning: \n",
+        "  - long responses (that could better fit better in a txt file), \n",
+        "  - media files (eg. returning an image), \n",
+        "  - multiple files (for example returning an image and a text file at the same time, packing them into a zip file)."
+    ],
     "keywords": [
         "docker",
         "api-v2"
