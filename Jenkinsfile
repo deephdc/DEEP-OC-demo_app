@@ -24,7 +24,7 @@ pipeline {
             when {
                 anyOf {
                     branch 'master'
-                    branch 'test'
+                    branch 'return-files'
                     buildingTag()
                 }
             }
@@ -58,21 +58,21 @@ pipeline {
                                                          "branch=master"])
                         }
 
-                        if (env.BRANCH_NAME == 'test') {
+                        if (env.BRANCH_NAME == 'return-files') {
                            // CPU
                            id_cpu = DockerBuild(id,
-                                            tag: ['test', 'cpu-test'],
+                                            tag: ['return-files', 'cpu-return-files'],
                                             build_args: ["tag=${env.base_cpu_tag}",
-                                                         "branch=test"])
+                                                         "branch=return-files"])
 
                            // Check that the image starts and get_metadata responses correctly
-                           sh "bash ../check_oc_artifact/check_artifact.sh ${env.dockerhub_repo}:test"
+                           sh "bash ../check_oc_artifact/check_artifact.sh ${env.dockerhub_repo}:return-files"
 
                            // GPU
                            id_gpu = DockerBuild(id,
-                                            tag: ['gpu-test'],
+                                            tag: ['gpu-return-files'],
                                             build_args: ["tag=${env.base_gpu_tag}",
-                                                         "branch=test"])
+                                                         "branch=return-files"])
                         }
                     }
                 }
@@ -88,7 +88,7 @@ pipeline {
             when {
                 anyOf {
                    branch 'master'
-                   branch 'test'
+                   branch 'return-files'
                    buildingTag()
                }
             }
