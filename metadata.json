@@ -1,6 +1,6 @@
 {
     "title": "demo_app",
-    "summary": "A toy application for demo and testing purposes. We just implement dummy inference, ie. we return the same inputs we are fed",
+    "summary": "A toy application for demo and testing purposes. We just implement dummy inference, ie. we return the same inputs we are fed.",
     "description": [
         "It can serve as a reference implementation of current best practices in the project (mirroring the [DEEP template](https://github.com/deephdc/cookiecutter-deep)). \n",
 
