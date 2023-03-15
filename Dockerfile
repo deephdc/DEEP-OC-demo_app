@@ -59,12 +59,6 @@ RUN curl -O https://downloads.rclone.org/rclone-current-linux-amd64.deb && \
 
 ENV RCLONE_CONFIG=/srv/.rclone/rclone.conf
 
-# Install DEEPaaS from PyPi
-#RUN pip3 install --no-cache-dir deepaas
-
-# Install DEEPaaS from source until 2.1 release is made to PyPi
-RUN pip3 install --no-cache-dir --upgrade git+https://github.com/indigo-dc/deepaas.git@master
-
 # Initialization scripts
 RUN git clone https://github.com/deephdc/deep-start /srv/.deep-start && \
     ln -s /srv/.deep-start/deep-start.sh /usr/local/bin/deep-start && \
