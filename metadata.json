@@ -22,9 +22,9 @@
     ],
     "license": "MIT",
     "date_creation": "2021-10-05",
-    "training_files_url": "http://<add-some-url-where-training-files-are-stored>",
-    "dataset_url": "http://<add-some-url-pointing-to-your-dataset>",
-    "cite_url": "http://<add-some-DOI-url>",
+    "training_files_url": "http://add-some-url-where-training-files-are-stored.com",
+    "dataset_url": "http://add-some-url-pointing-to-your-dataset.com",
+    "cite_url": "http://add-some-DOI-url.com",
     "sources": {
 		"dockerfile_repo": "https://github.com/deephdc/DEEP-OC-demo_app",
 		"docker_registry_repo": "deephdc/deep-oc-demo_app",
