@@ -36,14 +36,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         psmisc \
         && rm -rf /var/lib/apt/lists/*
 
-# Update python packages
-# [!] Remember: DEEP API V2 only works with python>=3.6
-RUN python3 --version && \
-    pip3 install --no-cache-dir --upgrade pip "setuptools<60.0.0" wheel
-
-# TODO: remove setuptools version requirement when [1] is fixed
-# [1]: https://github.com/pypa/setuptools/issues/3301
-
 # Set LANG environment
 ENV LANG C.UTF-8
 
