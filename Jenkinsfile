@@ -9,8 +9,8 @@ pipeline {
 
     environment {
         dockerhub_repo = "deephdc/deep-oc-demo_app"
-        base_cpu_tag = "2.9.1"
-        base_gpu_tag = "2.9.1-gpu"
+        base_cpu_tag = "2.16.1"
+        base_gpu_tag = "2.16.1-gpu"
     }
 
     stages {

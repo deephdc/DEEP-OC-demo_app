@@ -11,7 +11,7 @@
 # [!] Note: For the Jenkins CI/CD pipeline, input args are defined inside the
 # Jenkinsfile, not here!
 
-ARG tag=2.9.1
+ARG tag=2.16.1
 
 # Base image, e.g. tensorflow/tensorflow:2.9.1
 FROM tensorflow/tensorflow:${tag}
@@ -27,11 +27,13 @@ ARG branch=master
 ARG jlab=true
 
 # Install Ubuntu packages
+# psmisc is needed because of: https://github.com/deephdc/demo_app/issues/2
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     apt-get install -y --no-install-recommends \
         git \
         curl \
         nano \
+        psmisc \
         && rm -rf /var/lib/apt/lists/*
 
 # Update python packages
